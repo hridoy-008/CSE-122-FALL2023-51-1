@@ -1,42 +1,50 @@
 #include <iostream>
 using namespace std;
-
-class ManchesterUnited {
-    private:
-        int coach;
-        int player;
-    public:
-        void getdata() {
-            cout << "Enter coach and player: ";
-            cin >> coach >> player;
+class Manchester_United
+{
+private:
+    int coach;
+    int player;
+public:
+    Manchester_United():coach(0),player(0) {}
+    Manchester_United(int p,int q):coach(p),player(q) {}
+    void getData()
+    {
+        cout<<"Coach:"<<coach<<" "<<"Player:"<<player<<endl;
+    }
+     Manchester_United operator++()
+        {
+        coach++;
+        player++;
+        return *this;
         }
-        void operator++() {
-            ++coach;
-            ++player;
-        }
-        bool operator<(ManchesterUnited &obj) {
-            return (coach < obj.coach && player < obj.player);
-        }
+    bool operator==(const Manchester_United&other)const
+     {
+        return (coach==other.coach) && (player==other.player);
+     }
 };
-
-int main() {
-    ManchesterUnited ronaldo, fernandes;
-    ronaldo.getdata();
+int main()
+{
+    Manchester_United ronaldo;
+    Manchester_United fernandes;
+    cout<<"Before increment:"<<endl;
+    cout<<"ronaldo:";
+    ronaldo.getData();
+    cout<<"fernandes:";
+    fernandes.getData();
     ++ronaldo;
-    fernandes.getdata();
-    cout << "Before incrementing Ronaldo: ";
-    if (ronaldo < fernandes) {
-        cout << "Ronaldo is less than Fernandes." << endl;
-    } else {
-        cout << "Ronaldo is greater than Fernandes." << endl;
-    }
-    ++ronaldo;
-    cout << "After incrementing Ronaldo: ";
-    if (ronaldo < fernandes) {
-        cout << "Ronaldo is less than Fernandes." << endl;
-    } else {
-        cout << "Ronaldo is greater than Fernandes." << endl;
-    }
+    cout<<"After increment:"<<endl;
+    cout<<"ronaldo:";
+    ronaldo.getData();
+    cout<<"fernandes:";
+    fernandes.getData();
+    if(ronaldo==fernandes)
+        {
+        cout<<"ronaldo is equal to fernandes."<<endl;
+        }
+    else
+        {
+        cout<<"ronaldo is not equal to fernandes."<<endl;
+        }
     return 0;
 }
-Write to Riduan Islam
